@@ -19,23 +19,13 @@
 
 <style>
 
-/* =========================================================
-   COLORES
-========================================================= */
-
 :root{
     --rojo:#E60012;
     --verde:#74B950;
     --negro:#171717;
-    --negro-ruleta:#252525;
     --blanco:#FFFFFF;
     --gris:#F4F4F4;
 }
-
-
-/* =========================================================
-   RESET
-========================================================= */
 
 *{
     box-sizing:border-box;
@@ -45,15 +35,9 @@ html,
 body{
     margin:0;
     padding:0;
-
     width:100%;
     min-height:100%;
 }
-
-
-/* =========================================================
-   BODY
-========================================================= */
 
 body{
 
@@ -64,26 +48,513 @@ body{
     background-repeat:no-repeat;
     background-position:center center;
     background-size:cover;
+
     background-color:#f4f4f4;
 
-    font-family:'Oswald', sans-serif;
+    font-family:'Oswald',sans-serif;
+
+    overflow-x:hidden;
+}
+
+.screen{
+    width:100%;
+    min-height:100vh;
+    min-height:100dvh;
+}
+
+
+/* =========================================================
+   PORTADA
+========================================================= */
+
+.cover-screen{
 
     display:flex;
+
     flex-direction:column;
+
     align-items:center;
+
+    justify-content:flex-start;
+
+    text-align:center;
+
+    padding:
+        clamp(18px,2.5vh,35px)
+        12px
+        clamp(25px,4vh,50px);
+}
+
+
+/* =========================================================
+   BOTÓN MÚSICA
+========================================================= */
+
+.music-toggle{
+
+    position:fixed;
+
+    top:18px;
+
+    right:18px;
+
+    width:46px;
+
+    height:46px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:var(--verde);
+
+    color:#ffffff;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+    z-index:100;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    box-shadow:
+        0 4px 12px
+        rgba(0,0,0,.20);
+
+    transition:
+        transform .2s ease,
+        filter .2s ease;
+}
+
+.music-toggle:hover{
+
+    transform:scale(1.07);
+
+    filter:brightness(.95);
+}
+
+.music-toggle:active{
+
+    transform:scale(.95);
+}
+
+
+/* =========================================================
+   LOGO SUPERIOR PORTADA
+========================================================= */
+
+.cover-logo-top{
+
+    width:min(62vw,290px);
+
+    height:auto;
+
+    display:block;
+
+    object-fit:contain;
+
+    margin:
+        0
+        auto
+        clamp(18px,2.5vh,28px);
+}
+
+
+/* =========================================================
+   MEDIA RULETA PORTADA
+========================================================= */
+
+.cover-wheel-crop{
+
+    position:relative;
+
+    width:min(96vw,460px);
+
+    height:
+        clamp(
+            150px,
+            42vw,
+            215px
+        );
+
+    margin:
+        0
+        auto
+        clamp(10px,1.5vh,20px);
+
+    overflow:hidden;
+}
+
+.cover-wheel-preview{
+
+    position:absolute;
+
+    left:50%;
+
+    top:18px;
+
+    transform:translateX(-50%);
+
+    width:min(82vw,380px);
+
+    aspect-ratio:1 / 1;
+
+    border-radius:50%;
+
+    filter:
+        drop-shadow(
+            0 7px 12px
+            rgba(0,0,0,.25)
+        );
+}
+
+.cover-wheel-preview::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-3.5%;
+
+    border-radius:50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #303030 0%,
+            #111111 35%,
+            #252525 55%,
+            #080808 80%,
+            #292929 100%
+        );
+
+    z-index:-2;
+}
+
+.cover-wheel-preview::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:1%;
+
+    border-radius:50%;
+
+    border:
+        clamp(4px,.5vw,6px)
+        solid
+        var(--rojo);
+
+    pointer-events:none;
+
+    z-index:2;
+}
+
+#previewWheel{
+
+    width:100%;
+
+    height:100%;
+
+    display:block;
+
+    border-radius:50%;
+}
+
+
+/* =========================================================
+   TÍTULO PORTADA
+========================================================= */
+
+.cover-title{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-family:'Bebas Neue',sans-serif;
+
+    font-size:
+        clamp(
+            46px,
+            min(10.5vw,6.8vh),
+            82px
+        );
+
+    line-height:.84;
+
+    letter-spacing:1px;
+
+    margin:
+        0
+        0
+        clamp(12px,1.8vh,22px);
+}
+
+.cover-title-black{
+    color:var(--negro);
+}
+
+.cover-title-red{
+    color:var(--rojo);
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.cover-intro{
+
+    width:min(90vw,500px);
+
+    margin:
+        0
+        auto
+        clamp(18px,2.3vh,28px);
+
+    font-size:
+        clamp(
+            16px,
+            min(4vw,2.1vh),
+            22px
+        );
+
+    line-height:1.3;
+
+    font-weight:500;
+
+    color:var(--negro);
+}
+
+
+/* =========================================================
+   REQUISITOS
+========================================================= */
+
+.requirements-box{
+
+    width:min(90vw,520px);
+
+    background:rgba(255,255,255,.92);
+
+    border-radius:18px;
+
+    padding:
+        clamp(
+            18px,
+            2.4vh,
+            28px
+        );
+
+    margin-bottom:
+        clamp(
+            22px,
+            3vh,
+            35px
+        );
+
+    box-shadow:
+        0 10px 28px
+        rgba(0,0,0,.12);
+}
+
+.requirements-box h2{
+
+    font-family:'Bebas Neue',sans-serif;
+
+    font-size:
+        clamp(
+            28px,
+            min(6vw,3.8vh),
+            42px
+        );
+
+    color:var(--negro);
+
+    margin:
+        0
+        0
+        clamp(16px,2vh,22px);
+}
+
+.requirement-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:
+        clamp(
+            12px,
+            2vw,
+            18px
+        );
+
+    text-align:left;
+
+    margin-bottom:
+        clamp(
+            13px,
+            1.6vh,
+            18px
+        );
+}
+
+.requirement-item:last-child{
+    margin-bottom:0;
+}
+
+.requirement-number{
+
+    width:44px;
+
+    height:44px;
+
+    min-width:44px;
+
+    border-radius:50%;
+
+    background:var(--verde);
+
+    color:#ffffff;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-family:'Bebas Neue',sans-serif;
+
+    font-size:26px;
+}
+
+.requirement-item p{
+
+    margin:0;
+
+    font-size:
+        clamp(
+            15px,
+            min(3.5vw,2vh),
+            20px
+        );
+
+    line-height:1.25;
+
+    color:var(--negro);
+}
+
+
+/* =========================================================
+   BOTÓN PARTICIPAR
+========================================================= */
+
+.participate-btn{
+
+    width:min(72vw,300px);
+
+    padding:
+        14px
+        25px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:var(--verde);
+
+    color:#ffffff;
+
+    font-family:'Oswald',sans-serif;
+
+    font-size:
+        clamp(
+            21px,
+            min(4.5vw,3vh),
+            28px
+        );
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    margin-bottom:
+        clamp(
+            26px,
+            3.5vh,
+            45px
+        );
+
+    box-shadow:
+        0 6px 16px
+        rgba(0,0,0,.22);
+
+    transition:
+        transform .2s ease,
+        filter .2s ease;
+}
+
+.participate-btn:hover{
+
+    transform:scale(1.05);
+
+    filter:brightness(.93);
+}
+
+.participate-btn:active{
+
+    transform:scale(.96);
+}
+
+
+/* =========================================================
+   LOGO INFERIOR PORTADA
+========================================================= */
+
+.cover-logo-bottom{
+
+    width:min(66vw,320px);
+
+    height:auto;
+
+    display:block;
+
+    object-fit:contain;
+}
+
+
+/* =========================================================
+   PANTALLA RULETA
+========================================================= */
+
+#wheelScreen{
+
+    display:none;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    min-height:100vh;
+    min-height:100dvh;
 
     padding:
         clamp(10px,1.5vh,22px)
         12px
         clamp(20px,3vh,40px);
-
-    overflow-x:hidden;
 }
-
-
-/* =========================================================
-   LOGO SUPERIOR
-========================================================= */
 
 .logo-top{
 
@@ -98,23 +569,12 @@ body{
     margin:
         0
         auto
-        clamp(
-            20px,
-            3vh,
-            45px
-        );
-
-    flex-shrink:0;
+        clamp(20px,3vh,45px);
 }
-
-
-/* =========================================================
-   TÍTULO
-========================================================= */
 
 .main-title{
 
-    font-family:'Bebas Neue', sans-serif;
+    font-family:'Bebas Neue',sans-serif;
 
     font-size:
         clamp(
@@ -134,20 +594,12 @@ body{
     margin:
         0
         0
-        clamp(
-            26px,
-            3vh,
-            45px
-        );
-
-    flex-shrink:0;
+        clamp(26px,3vh,45px);
 }
-
 
 .title-black{
     color:var(--negro);
 }
-
 
 .title-red{
     color:var(--rojo);
@@ -155,7 +607,7 @@ body{
 
 
 /* =========================================================
-   CONTENEDOR RULETA
+   RULETA
 ========================================================= */
 
 .wheel-wrapper{
@@ -165,28 +617,14 @@ body{
     display:flex;
 
     justify-content:center;
+
     align-items:center;
 
     margin:
-        clamp(
-            5px,
-            .8vh,
-            15px
-        )
+        clamp(5px,.8vh,15px)
         auto
-        clamp(
-            28px,
-            3vh,
-            48px
-        );
-
-    flex-shrink:0;
+        clamp(28px,3vh,48px);
 }
-
-
-/* =========================================================
-   RULETA
-========================================================= */
 
 .wheel-container{
 
@@ -204,17 +642,7 @@ body{
     border-radius:50%;
 
     overflow:visible;
-
-    margin-left:auto;
-    margin-right:auto;
-
-    flex-shrink:0;
 }
-
-
-/* =========================================================
-   ARO EXTERIOR
-========================================================= */
 
 .wheel-container::before{
 
@@ -236,17 +664,8 @@ body{
             #292929 100%
         );
 
-    box-shadow:
-        0 12px 25px rgba(0,0,0,.28),
-        inset 0 2px 5px rgba(255,255,255,.15);
-
     z-index:-2;
 }
-
-
-/* =========================================================
-   ARO ROJO
-========================================================= */
 
 .wheel-container::after{
 
@@ -259,47 +678,29 @@ body{
     border-radius:50%;
 
     border:
-        clamp(
-            5px,
-            .7vw,
-            9px
-        )
+        clamp(5px,.7vw,9px)
         solid
         var(--rojo);
-
-    box-shadow:
-        inset 0 0 0 3px #670006,
-        0 0 12px rgba(230,0,18,.40);
 
     pointer-events:none;
 
     z-index:2;
 }
 
-
-/* =========================================================
-   CANVAS
-========================================================= */
-
 canvas{
 
     width:100%;
+
     height:100%;
 
     display:block;
 
     border-radius:50%;
-
-    filter:
-        drop-shadow(
-            0 10px 16px
-            rgba(0,0,0,.25)
-        );
 }
 
 
 /* =========================================================
-   FLECHA NEGRA
+   FLECHA
 ========================================================= */
 
 .pointer{
@@ -318,40 +719,23 @@ canvas{
     transform:translateX(-50%);
 
     width:0;
+
     height:0;
 
     border-left:
-        clamp(
-            18px,
-            2.4vw,
-            30px
-        )
+        clamp(18px,2.4vw,30px)
         solid transparent;
 
     border-right:
-        clamp(
-            18px,
-            2.4vw,
-            30px
-        )
+        clamp(18px,2.4vw,30px)
         solid transparent;
 
     border-top:
-        clamp(
-            38px,
-            4.2vw,
-            58px
-        )
+        clamp(38px,4.2vw,58px)
         solid
         var(--negro);
 
     z-index:30;
-
-    filter:
-        drop-shadow(
-            0 4px 3px
-            rgba(0,0,0,.25)
-        );
 }
 
 
@@ -371,7 +755,6 @@ canvas{
 
     z-index:5;
 }
-
 
 .light{
 
@@ -393,7 +776,6 @@ canvas{
     animation:
         blink 1s infinite alternate;
 }
-
 
 @keyframes blink{
 
@@ -426,6 +808,7 @@ canvas{
     position:absolute;
 
     left:50%;
+
     top:50%;
 
     transform:
@@ -438,11 +821,7 @@ canvas{
     border-radius:50%;
 
     border:
-        clamp(
-            3px,
-            .4vw,
-            5px
-        )
+        clamp(3px,.4vw,5px)
         solid
         var(--verde);
 
@@ -457,34 +836,20 @@ canvas{
     display:flex;
 
     align-items:center;
+
     justify-content:center;
 
     padding:
-        clamp(
-            5px,
-            .8vw,
-            10px
-        );
+        clamp(5px,.8vw,10px);
 
     cursor:pointer;
 
     z-index:20;
 
-    box-shadow:
-        0 4px 10px rgba(0,0,0,.28),
-        0 0 0 2px rgba(255,255,255,.8),
-        inset 0 2px 4px rgba(255,255,255,.8);
-
     transition:
         transform .25s ease,
-        box-shadow .25s ease,
-        filter .25s ease;
+        box-shadow .25s ease;
 }
-
-
-/* =========================================================
-   HOVER CENTRAL
-========================================================= */
 
 .center-button:hover{
 
@@ -493,13 +858,9 @@ canvas{
         scale(1.11);
 
     box-shadow:
-        0 8px 18px rgba(0,0,0,.32),
-        0 0 16px rgba(116,185,80,.55),
-        inset 0 2px 5px rgba(255,255,255,.9);
-
-    filter:brightness(1.05);
+        0 0 18px
+        rgba(116,185,80,.55);
 }
-
 
 .center-button:active{
 
@@ -508,22 +869,17 @@ canvas{
         scale(.94);
 }
 
-
 .center-button.disabled{
 
     pointer-events:none;
 
-    opacity:.90;
+    opacity:.9;
 }
-
-
-/* =========================================================
-   LOGO CENTRAL
-========================================================= */
 
 .center-logo{
 
     width:78%;
+
     height:78%;
 
     object-fit:contain;
@@ -531,15 +887,6 @@ canvas{
     display:block;
 
     pointer-events:none;
-
-    transition:
-        transform .25s ease;
-}
-
-
-.center-button:hover .center-logo{
-
-    transform:scale(1.05);
 }
 
 
@@ -554,25 +901,12 @@ canvas{
     text-align:center;
 
     margin:
-        clamp(
-            25px,
-            3vh,
-            45px
-        )
+        clamp(25px,3vh,45px)
         0
-        clamp(
-            35px,
-            4vh,
-            65px
-        );
-
-    flex-shrink:0;
+        clamp(35px,4vh,65px);
 }
 
-
 .bottom-text h2{
-
-    font-family:'Oswald', sans-serif;
 
     font-size:
         clamp(
@@ -587,15 +921,8 @@ canvas{
 
     margin:0;
 
-    letter-spacing:.3px;
-
     color:var(--negro);
 }
-
-
-/* =========================================================
-   LOGO INFERIOR
-========================================================= */
 
 .logo-bottom{
 
@@ -608,21 +935,6 @@ canvas{
     display:block;
 
     object-fit:contain;
-
-    margin:
-        clamp(
-            10px,
-            1.5vh,
-            25px
-        )
-        auto
-        clamp(
-            20px,
-            3vh,
-            40px
-        );
-
-    flex-shrink:0;
 }
 
 
@@ -636,17 +948,13 @@ canvas{
 
     inset:0;
 
-    width:100%;
-
-    height:100vh;
-    height:100dvh;
-
     background:
         rgba(0,0,0,.78);
 
     display:flex;
 
     justify-content:center;
+
     align-items:center;
 
     padding:20px;
@@ -654,67 +962,22 @@ canvas{
     z-index:9999;
 }
 
-
-/* =========================================================
-   CAJA POPUP
-========================================================= */
-
 .popup-box{
 
     width:min(90vw,500px);
 
-    max-height:90dvh;
-
     background:#ffffff;
 
     padding:
-        clamp(
-            25px,
-            3dvh,
-            40px
-        )
-        clamp(
-            20px,
-            4vw,
-            32px
-        );
+        clamp(25px,3vh,40px)
+        clamp(20px,4vw,32px);
 
     border-radius:18px;
 
     text-align:center;
-
-    box-shadow:
-        0 20px 50px
-        rgba(0,0,0,.45);
-
-    animation:
-        popupScale .3s ease;
-
-    overflow-y:auto;
 }
-
-
-@keyframes popupScale{
-
-    from{
-        transform:scale(.7);
-        opacity:0;
-    }
-
-    to{
-        transform:scale(1);
-        opacity:1;
-    }
-}
-
-
-/* =========================================================
-   TEXTO POPUP
-========================================================= */
 
 .popup-label{
-
-    font-family:'Oswald', sans-serif;
 
     font-size:
         clamp(
@@ -723,19 +986,14 @@ canvas{
             22px
         );
 
-    font-weight:600;
-
     color:#555555;
-
-    letter-spacing:1px;
 
     margin:0 0 5px;
 }
 
-
 .popup-title{
 
-    font-family:'Bebas Neue', sans-serif;
+    font-family:'Bebas Neue',sans-serif;
 
     font-size:
         clamp(
@@ -744,30 +1002,19 @@ canvas{
             70px
         );
 
-    line-height:.9;
-
     color:var(--rojo);
 
     margin:
         0
         0
-        clamp(
-            12px,
-            1.5dvh,
-            20px
-        );
+        18px;
 }
-
-
-/* =========================================================
-   IMAGEN PREMIO
-========================================================= */
 
 .popup-image{
 
     width:min(70vw,320px);
 
-    max-height:30dvh;
+    max-height:30vh;
 
     object-fit:contain;
 
@@ -777,14 +1024,7 @@ canvas{
         10px
         auto
         20px;
-
-    border-radius:10px;
 }
-
-
-/* =========================================================
-   BOTÓN CERRAR
-========================================================= */
 
 .popup-btn{
 
@@ -802,105 +1042,40 @@ canvas{
 
     color:#ffffff;
 
-    font-family:'Oswald', sans-serif;
+    font-family:'Oswald',sans-serif;
 
     font-size:20px;
 
     font-weight:600;
 
     cursor:pointer;
-
-    box-shadow:
-        0 5px 12px
-        rgba(0,0,0,.20);
-
-    transition:
-        transform .2s ease,
-        filter .2s ease,
-        box-shadow .2s ease;
-}
-
-
-.popup-btn:hover{
-
-    filter:brightness(.90);
-
-    transform:scale(1.05);
-
-    box-shadow:
-        0 7px 16px
-        rgba(0,0,0,.25);
-}
-
-
-.popup-btn:active{
-
-    transform:scale(.96);
 }
 
 
 /* =========================================================
-   CELULARES
+   MÓVIL
 ========================================================= */
 
 @media(max-width:600px){
 
-    body{
+    .cover-wheel-crop{
 
-        padding:
-            10px
-            10px
-            22px;
-    }
+        width:98vw;
 
-
-    /* ISUZU */
-
-    .logo-top{
-
-        width:min(64vw,250px);
-
-        margin-bottom:
+        height:
             clamp(
-                22px,
-                3vh,
-                35px
+                145px,
+                44vw,
+                185px
             );
     }
 
+    .cover-wheel-preview{
 
-    /* RULETA DE ACCESORIOS */
+        width:min(84vw,340px);
 
-    .main-title{
-
-        font-size:
-            clamp(
-                42px,
-                11vw,
-                62px
-            );
-
-        margin-bottom:
-            clamp(
-                25px,
-                3vh,
-                35px
-            );
+        top:16px;
     }
-
-
-    /* RULETA */
-
-    .wheel-wrapper{
-
-        margin-bottom:
-            clamp(
-                25px,
-                3vh,
-                38px
-            );
-    }
-
 
     .wheel-container{
 
@@ -911,275 +1086,6 @@ canvas{
                 460px
             );
     }
-
-
-    /* EQUIPA */
-
-    .bottom-text{
-
-        margin-top:
-            clamp(
-                25px,
-                3vh,
-                35px
-            );
-
-        margin-bottom:
-            clamp(
-                35px,
-                4vh,
-                50px
-            );
-    }
-
-
-    .bottom-text h2{
-
-        font-size:
-            clamp(
-                20px,
-                5.8vw,
-                30px
-            );
-    }
-
-
-    /* SANTA CLARA */
-
-    .logo-bottom{
-
-        width:min(68vw,300px);
-
-        margin-top:
-            clamp(
-                10px,
-                1.5vh,
-                20px
-            );
-    }
-
-}
-
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media(min-width:601px) and (max-width:1000px){
-
-    .logo-top{
-
-        width:min(48vw,300px);
-
-        margin-bottom:
-            clamp(
-                25px,
-                3vh,
-                45px
-            );
-    }
-
-
-    .main-title{
-
-        margin-bottom:
-            clamp(
-                28px,
-                3vh,
-                45px
-            );
-    }
-
-
-    .wheel-container{
-
-        width:
-            min(
-                70vw,
-                44vh,
-                560px
-            );
-    }
-
-
-    .bottom-text{
-
-        margin-top:
-            clamp(
-                28px,
-                3vh,
-                45px
-            );
-
-        margin-bottom:
-            clamp(
-                40px,
-                4vh,
-                65px
-            );
-    }
-
-
-    .logo-bottom{
-
-        width:min(52vw,360px);
-    }
-
-}
-
-
-/* =========================================================
-   PANTALLAS GRANDES
-========================================================= */
-
-@media(min-width:1001px){
-
-    .logo-top{
-
-        width:min(32vw,320px);
-
-        margin-bottom:
-            clamp(
-                25px,
-                3vh,
-                45px
-            );
-    }
-
-
-    .main-title{
-
-        font-size:
-            clamp(
-                60px,
-                5vw,
-                88px
-            );
-
-        margin-bottom:
-            clamp(
-                30px,
-                3vh,
-                50px
-            );
-    }
-
-
-    .wheel-container{
-
-        width:
-            min(
-                52vw,
-                44vh,
-                620px
-            );
-    }
-
-
-    .bottom-text{
-
-        margin-top:
-            clamp(
-                30px,
-                3vh,
-                50px
-            );
-
-        margin-bottom:
-            clamp(
-                45px,
-                5vh,
-                75px
-            );
-    }
-
-
-    .bottom-text h2{
-
-        font-size:
-            clamp(
-                28px,
-                2.5vw,
-                40px
-            );
-    }
-
-
-    .logo-bottom{
-
-        width:min(38vw,390px);
-    }
-
-}
-
-
-/* =========================================================
-   HORIZONTAL
-   MANTIENE EL MISMO ORDEN
-========================================================= */
-
-@media(orientation:landscape){
-
-    body{
-
-        overflow-y:auto;
-    }
-
-
-    .logo-top{
-
-        margin-bottom:18px;
-    }
-
-
-    .main-title{
-
-        font-size:
-            clamp(
-                38px,
-                6vh,
-                65px
-            );
-
-        margin-bottom:20px;
-    }
-
-
-    .wheel-container{
-
-        width:
-            min(
-                44vw,
-                55vh,
-                560px
-            );
-    }
-
-
-    .bottom-text{
-
-        margin-top:20px;
-
-        margin-bottom:30px;
-    }
-
-
-    .bottom-text h2{
-
-        font-size:
-            clamp(
-                20px,
-                4vh,
-                34px
-            );
-    }
-
-
-    .logo-bottom{
-
-        max-height:12vh;
-    }
-
 }
 
 </style>
@@ -1191,93 +1097,219 @@ canvas{
 
 
 <!-- =========================================================
-     LOGO SUPERIOR
+     AUDIO DE FONDO
 ========================================================= -->
 
-<img
-    src="logo-superior.png"
-    class="logo-top"
-    alt="Isuzu Pickup"
->
+<audio
+    id="backgroundMusic"
+    src="fondo.mp3"
+    loop
+    preload="auto"
+></audio>
 
 
 <!-- =========================================================
-     TÍTULO
+     PORTADA
 ========================================================= -->
 
-<h1 class="main-title">
+<div
+    id="coverScreen"
+    class="screen cover-screen"
+>
 
-    <span class="title-black">
-        RULETA DE
-    </span>
 
-    <br>
+    <!-- BOTÓN MÚSICA -->
 
-    <span class="title-red">
-        ACCESORIOS
-    </span>
+    <button
+        id="musicToggle"
+        class="music-toggle"
+        onclick="toggleMusic()"
+        aria-label="Activar o desactivar música"
+    >
+        🔊
+    </button>
 
-</h1>
+
+    <img
+        src="logo-superior.png"
+        class="cover-logo-top"
+        alt="Isuzu Pickup"
+    >
+
+
+    <div class="cover-wheel-crop">
+
+        <div class="cover-wheel-preview">
+
+            <canvas id="previewWheel"></canvas>
+
+        </div>
+
+    </div>
+
+
+    <div class="cover-title">
+
+        <span class="cover-title-black">
+            RULETA DE
+        </span>
+
+        <span class="cover-title-red">
+            ACCESORIOS
+        </span>
+
+    </div>
+
+
+    <p class="cover-intro">
+        Equipa tu Isuzu y participa por increíbles premios.
+    </p>
+
+
+    <div class="requirements-box">
+
+        <h2>
+            ¿CÓMO PARTICIPAR?
+        </h2>
+
+
+        <div class="requirement-item">
+
+            <div class="requirement-number">
+                1
+            </div>
+
+            <p>
+                Compra productos seleccionados.
+            </p>
+
+        </div>
+
+
+        <div class="requirement-item">
+
+            <div class="requirement-number">
+                2
+            </div>
+
+            <p>
+                Acercate con un asesor.
+            </p>
+
+        </div>
+
+
+        <div class="requirement-item">
+
+            <div class="requirement-number">
+                3
+            </div>
+
+            <p>
+                Presiona participar y gira la ruleta.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="participate-btn"
+        onclick="showWheelScreen()"
+    >
+        PARTICIPAR
+    </button>
+
+
+    <img
+        src="logo-inferior.png"
+        class="cover-logo-bottom"
+        alt="Santa Clara Pickup"
+    >
+
+</div>
+
 
 
 <!-- =========================================================
      RULETA
 ========================================================= -->
 
-<div class="wheel-wrapper">
-
-    <div class="wheel-container">
-
-        <div class="pointer"></div>
-
-        <canvas id="wheel"></canvas>
-
-        <div class="lights"></div>
+<div
+    id="wheelScreen"
+    class="screen"
+>
 
 
-        <!-- BOTÓN CENTRAL -->
+    <img
+        src="logo-superior.png"
+        class="logo-top"
+        alt="Isuzu Pickup"
+    >
 
-        <div
-            id="centerButton"
-            class="center-button"
-            onclick="spin()"
-        >
 
-            <img
-                src="logo-centro.png"
-                class="center-logo"
-                alt="Santa Clara Pickup"
+    <h1 class="main-title">
+
+        <span class="title-black">
+            RULETA DE
+        </span>
+
+        <br>
+
+        <span class="title-red">
+            ACCESORIOS
+        </span>
+
+    </h1>
+
+
+    <div class="wheel-wrapper">
+
+        <div class="wheel-container">
+
+            <div class="pointer"></div>
+
+            <canvas id="wheel"></canvas>
+
+            <div class="lights"></div>
+
+
+            <div
+                id="centerButton"
+                class="center-button"
+                onclick="spin()"
             >
+
+                <img
+                    src="logo-centro.png"
+                    class="center-logo"
+                    alt="Santa Clara Pickup"
+                >
+
+            </div>
 
         </div>
 
     </div>
 
+
+    <div class="bottom-text">
+
+        <h2>
+            ¡EQUIPA TU ISUZU Y GANA!
+        </h2>
+
+    </div>
+
+
+    <img
+        src="logo-inferior.png"
+        class="logo-bottom"
+        alt="Santa Clara Pickup"
+    >
+
 </div>
-
-
-<!-- =========================================================
-     TEXTO INFERIOR
-========================================================= -->
-
-<div class="bottom-text">
-
-    <h2>
-        ¡EQUIPA TU ISUZU Y GANA!
-    </h2>
-
-</div>
-
-
-<!-- =========================================================
-     LOGO INFERIOR
-========================================================= -->
-
-<img
-    src="logo-inferior.png"
-    class="logo-bottom"
-    alt="Santa Clara Pickup"
->
 
 
 <script>
@@ -1347,21 +1379,26 @@ const prizes = [
 const canvas =
     document.getElementById("wheel");
 
-
-const container =
-    document.querySelector(
-        ".wheel-container"
-    );
-
-
 const ctx =
     canvas.getContext("2d");
 
+const container =
+    document.querySelector(".wheel-container");
 
 const centerButton =
-    document.getElementById(
-        "centerButton"
-    );
+    document.getElementById("centerButton");
+
+const previewCanvas =
+    document.getElementById("previewWheel");
+
+const previewCtx =
+    previewCanvas.getContext("2d");
+
+const backgroundMusic =
+    document.getElementById("backgroundMusic");
+
+const musicToggle =
+    document.getElementById("musicToggle");
 
 
 /* =========================================================
@@ -1372,6 +1409,8 @@ let angle = 0;
 
 let spinning = false;
 
+let musicEnabled = false;
+
 
 /* =========================================================
    SONIDOS
@@ -1380,17 +1419,112 @@ let spinning = false;
 const spinSound =
     new Audio("ruleta.mp3");
 
-
 const winSound =
     new Audio("ganador.mp3");
-
 
 const loseSound =
     new Audio("intenta.mp3");
 
 
 /* =========================================================
-   RESIZE CANVAS
+   MÚSICA PORTADA
+========================================================= */
+
+backgroundMusic.volume = 0.25;
+
+
+function playBackgroundMusic(){
+
+    backgroundMusic
+        .play()
+        .then(() => {
+
+            musicEnabled = true;
+
+            musicToggle.textContent = "🔊";
+
+        })
+        .catch(() => {
+
+            musicEnabled = false;
+
+            musicToggle.textContent = "🔇";
+
+        });
+
+}
+
+
+function pauseBackgroundMusic(){
+
+    backgroundMusic.pause();
+
+    musicEnabled = false;
+
+    musicToggle.textContent = "🔇";
+
+}
+
+
+function toggleMusic(){
+
+    if(backgroundMusic.paused){
+
+        playBackgroundMusic();
+
+    }
+
+    else{
+
+        pauseBackgroundMusic();
+
+    }
+
+}
+
+
+/* =========================================================
+   PASAR A RULETA
+========================================================= */
+
+function showWheelScreen(){
+
+    /*
+       DETENER MÚSICA DE PORTADA
+    */
+
+    backgroundMusic.pause();
+
+    backgroundMusic.currentTime = 0;
+
+
+    document
+        .getElementById("coverScreen")
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById("wheelScreen")
+        .style.display =
+        "flex";
+
+
+    window.scrollTo(
+        0,
+        0
+    );
+
+
+    setTimeout(
+        updateLayout,
+        100
+    );
+}
+
+
+/* =========================================================
+   CANVAS
 ========================================================= */
 
 function resizeCanvas(){
@@ -1399,7 +1533,11 @@ function resizeCanvas(){
         container.offsetWidth;
 
 
-    const pixelRatio =
+    if(size <= 0)
+        return;
+
+
+    const ratio =
         Math.min(
             window.devicePixelRatio || 1,
             2
@@ -1407,17 +1545,11 @@ function resizeCanvas(){
 
 
     canvas.width =
-        Math.round(
-            size *
-            pixelRatio
-        );
+        size * ratio;
 
 
     canvas.height =
-        Math.round(
-            size *
-            pixelRatio
-        );
+        size * ratio;
 
 
     canvas.style.width =
@@ -1429,23 +1561,22 @@ function resizeCanvas(){
 
 
     ctx.setTransform(
-        pixelRatio,
+        ratio,
         0,
         0,
-        pixelRatio,
+        ratio,
         0,
         0
     );
-
 }
 
 
 /* =========================================================
-   DIBUJAR REGALO
+   REGALO
 ========================================================= */
 
 function drawGiftIcon(
-    ctx,
+    context,
     x,
     y,
     size,
@@ -1453,84 +1584,58 @@ function drawGiftIcon(
     ribbonColor
 ){
 
-    ctx.save();
+    context.save();
 
-    ctx.translate(x,y);
-
-
-    const boxW =
-        size * 0.60;
+    context.translate(x,y);
 
 
-    const boxH =
-        size * 0.43;
+    const boxW = size * .60;
+    const boxH = size * .43;
+
+    const lidW = size * .70;
+    const lidH = size * .13;
+
+    const ribbonW = size * .10;
+    const ribbonH = size * .075;
+
+    const topY = -size * .015;
 
 
-    const lidW =
-        size * 0.70;
-
-
-    const lidH =
-        size * 0.13;
-
-
-    const ribbonW =
-        size * 0.10;
-
-
-    const ribbonH =
-        size * 0.075;
-
-
-    const topY =
-        -size * 0.015;
-
-
-    /* CAJA */
-
-    ctx.fillStyle =
+    context.fillStyle =
         boxColor;
 
 
-    ctx.beginPath();
+    context.beginPath();
 
-
-    ctx.roundRect(
+    context.roundRect(
         -boxW / 2,
         topY,
         boxW,
         boxH,
-        size * 0.035
+        size * .035
     );
 
-
-    ctx.fill();
-
-
-    /* TAPA */
-
-    ctx.beginPath();
+    context.fill();
 
 
-    ctx.roundRect(
+    context.beginPath();
+
+    context.roundRect(
         -lidW / 2,
         topY - lidH,
         lidW,
         lidH,
-        size * 0.03
+        size * .03
     );
 
+    context.fill();
 
-    ctx.fill();
 
-
-    /* CINTA VERTICAL */
-
-    ctx.fillStyle =
+    context.fillStyle =
         ribbonColor;
 
 
-    ctx.fillRect(
+    context.fillRect(
         -ribbonW / 2,
         topY - lidH,
         ribbonW,
@@ -1538,161 +1643,125 @@ function drawGiftIcon(
     );
 
 
-    /* CINTA HORIZONTAL */
-
-    ctx.fillRect(
+    context.fillRect(
         -boxW / 2,
-        topY + boxH * 0.36,
+        topY + boxH * .36,
         boxW,
         ribbonH
     );
 
 
-    /* LAZO */
-
-    ctx.strokeStyle =
+    context.strokeStyle =
         ribbonColor;
 
 
-    ctx.lineWidth =
-        size * 0.055;
+    context.lineWidth =
+        size * .055;
 
 
-    ctx.lineCap =
+    context.lineCap =
         "round";
 
 
-    ctx.lineJoin =
-        "round";
+    context.beginPath();
 
-
-    /* LAZO IZQUIERDO */
-
-    ctx.beginPath();
-
-
-    ctx.moveTo(
+    context.moveTo(
         0,
         topY - lidH
     );
 
 
-    ctx.bezierCurveTo(
-
-        -size * 0.05,
-        -size * 0.29,
-
-        -size * 0.28,
-        -size * 0.31,
-
-        -size * 0.21,
-        -size * 0.105
-
+    context.bezierCurveTo(
+        -size * .05,
+        -size * .29,
+        -size * .28,
+        -size * .31,
+        -size * .21,
+        -size * .105
     );
 
 
-    ctx.bezierCurveTo(
-
-        -size * 0.12,
-        -size * 0.025,
-
-        -size * 0.04,
-        -size * 0.05,
-
-        0,
-        topY - lidH
-
-    );
-
-
-    ctx.stroke();
-
-
-    /* LAZO DERECHO */
-
-    ctx.beginPath();
-
-
-    ctx.moveTo(
+    context.bezierCurveTo(
+        -size * .12,
+        -size * .025,
+        -size * .04,
+        -size * .05,
         0,
         topY - lidH
     );
 
 
-    ctx.bezierCurveTo(
-
-        size * 0.05,
-        -size * 0.29,
-
-        size * 0.28,
-        -size * 0.31,
-
-        size * 0.21,
-        -size * 0.105
-
-    );
+    context.stroke();
 
 
-    ctx.bezierCurveTo(
+    context.beginPath();
 
-        size * 0.12,
-        -size * 0.025,
-
-        size * 0.04,
-        -size * 0.05,
-
+    context.moveTo(
         0,
         topY - lidH
-
     );
 
 
-    ctx.stroke();
+    context.bezierCurveTo(
+        size * .05,
+        -size * .29,
+        size * .28,
+        -size * .31,
+        size * .21,
+        -size * .105
+    );
 
 
-    /* NUDO */
+    context.bezierCurveTo(
+        size * .12,
+        -size * .025,
+        size * .04,
+        -size * .05,
+        0,
+        topY - lidH
+    );
 
-    ctx.fillStyle =
+
+    context.stroke();
+
+
+    context.fillStyle =
         ribbonColor;
 
 
-    ctx.beginPath();
+    context.beginPath();
 
-
-    ctx.arc(
+    context.arc(
         0,
         topY - lidH,
-        size * 0.055,
+        size * .055,
         0,
         Math.PI * 2
     );
 
+    context.fill();
 
-    ctx.fill();
 
-
-    ctx.restore();
-
+    context.restore();
 }
 
 
 /* =========================================================
-   DIBUJAR RULETA
+   DIBUJAR RULETA GENÉRICA
 ========================================================= */
 
-function drawWheel(){
-
-    const size =
-        container.offsetWidth;
-
+function drawWheelOnCanvas(
+    context,
+    size,
+    wheelAngle
+){
 
     const center =
         size / 2;
 
 
     const radius =
-        center -
-        size * 0.03;
+        center - size * .03;
 
 
     const sliceAngle =
@@ -1700,7 +1769,7 @@ function drawWheel(){
         prizes.length;
 
 
-    ctx.clearRect(
+    context.clearRect(
         0,
         0,
         size,
@@ -1714,148 +1783,122 @@ function drawWheel(){
         i++
     ){
 
-        /* SEGMENTO */
+        context.beginPath();
 
-        ctx.beginPath();
-
-
-        ctx.moveTo(
+        context.moveTo(
             center,
             center
         );
 
 
-        ctx.arc(
-
+        context.arc(
             center,
             center,
             radius,
-
-            angle +
-            i * sliceAngle,
-
-            angle +
-            (i + 1) * sliceAngle
-
+            wheelAngle + i * sliceAngle,
+            wheelAngle + (i + 1) * sliceAngle
         );
 
 
-        ctx.closePath();
+        context.closePath();
 
-
-        /* COLORES */
 
         if(i % 3 === 0){
 
-            ctx.fillStyle =
+            context.fillStyle =
                 "#E60012";
 
         }
 
         else if(i % 3 === 1){
 
-            ctx.fillStyle =
+            context.fillStyle =
                 "#252525";
 
         }
 
         else{
 
-            ctx.fillStyle =
+            context.fillStyle =
                 "#F4F4F4";
 
         }
 
 
-        ctx.fill();
+        context.fill();
 
 
-        ctx.lineWidth =
+        context.lineWidth =
             Math.max(
                 2,
-                size * 0.006
+                size * .006
             );
 
 
-        ctx.strokeStyle =
+        context.strokeStyle =
             "#FFFFFF";
 
 
-        ctx.stroke();
+        context.stroke();
 
 
-        /* CONTENIDO */
-
-        ctx.save();
+        context.save();
 
 
-        ctx.translate(
+        context.translate(
             center,
             center
         );
 
 
-        ctx.rotate(
-
-            angle +
+        context.rotate(
+            wheelAngle +
             i * sliceAngle +
             sliceAngle / 2
-
         );
 
-
-        /* INTENTA DE NUEVO */
 
         if(
             prizes[i].name ===
             "INTENTA DE NUEVO"
         ){
 
-            if(i % 3 === 2){
-
-                ctx.fillStyle =
-                    "#171717";
-
-            }
-
-            else{
-
-                ctx.fillStyle =
-                    "#FFFFFF";
-
-            }
+            context.fillStyle =
+                i % 3 === 2
+                ? "#171717"
+                : "#FFFFFF";
 
 
-            ctx.textAlign =
+            context.textAlign =
                 "center";
 
 
-            ctx.textBaseline =
+            context.textBaseline =
                 "middle";
 
 
-            ctx.font =
+            context.font =
                 "700 " +
-                (size * 0.042) +
+                (size * .042) +
                 "px Oswald";
 
 
             const textX =
-                radius * 0.67;
+                radius * .67;
 
 
             const lineHeight =
-                size * 0.052;
+                size * .052;
 
 
-            ctx.fillText(
+            context.fillText(
                 "INTENTA",
                 textX,
                 -lineHeight / 2
             );
 
 
-            ctx.fillText(
+            context.fillText(
                 "DE NUEVO",
                 textX,
                 lineHeight / 2
@@ -1865,14 +1908,9 @@ function drawWheel(){
 
         else{
 
-            /* REGALOS */
-
             let boxColor;
-
             let ribbonColor;
 
-
-            /* SEGMENTO NEGRO */
 
             if(i % 3 === 1){
 
@@ -1884,9 +1922,6 @@ function drawWheel(){
 
             }
 
-
-            /* SEGMENTO ROJO */
-
             else if(i % 3 === 0){
 
                 boxColor =
@@ -1896,9 +1931,6 @@ function drawWheel(){
                     "#171717";
 
             }
-
-
-            /* SEGMENTO BLANCO */
 
             else{
 
@@ -1912,56 +1944,166 @@ function drawWheel(){
 
 
             drawGiftIcon(
-
-                ctx,
-
-                radius * 0.67,
-
+                context,
+                radius * .67,
                 0,
-
-                size * 0.17,
-
+                size * .17,
                 boxColor,
-
                 ribbonColor
-
             );
 
         }
 
 
-        ctx.restore();
+        context.restore();
 
     }
 
 
-    /* BORDE */
-
-    ctx.beginPath();
+    context.beginPath();
 
 
-    ctx.arc(
+    context.arc(
         center,
         center,
         radius,
         0,
-        2 * Math.PI
+        Math.PI * 2
     );
 
 
-    ctx.lineWidth =
+    context.lineWidth =
         Math.max(
             5,
-            size * 0.014
+            size * .014
         );
 
 
-    ctx.strokeStyle =
+    context.strokeStyle =
         "#171717";
 
 
-    ctx.stroke();
+    context.stroke();
+}
 
+
+/* =========================================================
+   RULETA PRINCIPAL
+========================================================= */
+
+function drawWheel(){
+
+    const size =
+        container.offsetWidth;
+
+
+    if(size <= 0)
+        return;
+
+
+    drawWheelOnCanvas(
+        ctx,
+        size,
+        angle
+    );
+}
+
+
+/* =========================================================
+   PREVIEW PORTADA
+========================================================= */
+
+function drawPreviewWheel(){
+
+    const previewContainer =
+        document.querySelector(
+            ".cover-wheel-preview"
+        );
+
+
+    const size =
+        previewContainer.offsetWidth;
+
+
+    if(size <= 0)
+        return;
+
+
+    const ratio =
+        Math.min(
+            window.devicePixelRatio || 1,
+            2
+        );
+
+
+    previewCanvas.width =
+        size * ratio;
+
+
+    previewCanvas.height =
+        size * ratio;
+
+
+    previewCanvas.style.width =
+        size + "px";
+
+
+    previewCanvas.style.height =
+        size + "px";
+
+
+    previewCtx.setTransform(
+        ratio,
+        0,
+        0,
+        ratio,
+        0,
+        0
+    );
+
+
+    drawWheelOnCanvas(
+        previewCtx,
+        size,
+        0
+    );
+
+
+    const center =
+        size / 2;
+
+
+    previewCtx.beginPath();
+
+
+    previewCtx.arc(
+        center,
+        center,
+        size * .09,
+        0,
+        Math.PI * 2
+    );
+
+
+    previewCtx.fillStyle =
+        "#FFFFFF";
+
+
+    previewCtx.fill();
+
+
+    previewCtx.lineWidth =
+        Math.max(
+            3,
+            size * .012
+        );
+
+
+    previewCtx.strokeStyle =
+        "#74B950";
+
+
+    previewCtx.stroke();
 }
 
 
@@ -1975,20 +2117,15 @@ function spin(){
         return;
 
 
-    spinning =
-        true;
+    spinning = true;
 
 
     centerButton
         .classList
-        .add(
-            "disabled"
-        );
+        .add("disabled");
 
 
-    spinSound.currentTime =
-        0;
-
+    spinSound.currentTime = 0;
 
     spinSound
         .play()
@@ -2003,47 +2140,31 @@ function spin(){
         angle;
 
 
-    const extraSpins =
-        6 *
-        2 *
-        Math.PI;
-
-
-    const randomAngle =
-        Math.random() *
-        2 *
-        Math.PI;
-
-
     const finalAngle =
         startAngle +
-        extraSpins +
-        randomAngle;
+        6 * 2 * Math.PI +
+        Math.random() * 2 * Math.PI;
 
 
-    let start =
-        null;
+    let start = null;
 
 
     function animate(timestamp){
 
         if(!start){
 
-            start =
-                timestamp;
+            start = timestamp;
 
         }
 
 
         const progress =
-            timestamp -
-            start;
+            timestamp - start;
 
 
         const normalized =
             Math.min(
-                progress /
-                spinDuration,
+                progress / spinDuration,
                 1
             );
 
@@ -2068,10 +2189,7 @@ function spin(){
         drawWheel();
 
 
-        if(
-            progress <
-            spinDuration
-        ){
+        if(progress < spinDuration){
 
             requestAnimationFrame(
                 animate
@@ -2089,31 +2207,25 @@ function spin(){
             drawWheel();
 
 
-            spinning =
-                false;
+            spinning = false;
 
 
             centerButton
                 .classList
-                .remove(
-                    "disabled"
-                );
+                .remove("disabled");
 
 
             spinSound.pause();
 
 
             showResult();
-
         }
-
     }
 
 
     requestAnimationFrame(
         animate
     );
-
 }
 
 
@@ -2165,9 +2277,7 @@ function showResult(){
         "INTENTA DE NUEVO"
     ){
 
-        loseSound.currentTime =
-            0;
-
+        loseSound.currentTime = 0;
 
         loseSound
             .play()
@@ -2177,9 +2287,7 @@ function showResult(){
 
     else{
 
-        winSound.currentTime =
-            0;
-
+        winSound.currentTime = 0;
 
         winSound
             .play()
@@ -2189,7 +2297,6 @@ function showResult(){
 
 
     showPopup(prize);
-
 }
 
 
@@ -2214,33 +2321,24 @@ function showPopup(prize){
         <div class="popup-box">
 
             <p class="popup-label">
-
                 ${prize.message}
-
             </p>
 
-
             <h2 class="popup-title">
-
                 ${prize.name}
-
             </h2>
-
 
             <img
                 src="${prize.image}"
                 class="popup-image"
                 alt="${prize.name}"
-
                 onerror="
                     this.style.display='none';
                 "
             >
 
-
             <button
                 class="popup-btn"
-
                 onclick="
                     this
                     .parentElement
@@ -2248,9 +2346,7 @@ function showPopup(prize){
                     .remove()
                 "
             >
-
                 CERRAR
-
             </button>
 
         </div>
@@ -2262,7 +2358,6 @@ function showPopup(prize){
         .appendChild(
             popup
         );
-
 }
 
 
@@ -2278,12 +2373,15 @@ function createLights(){
         );
 
 
-    lightsContainer.innerHTML =
-        "";
+    lightsContainer.innerHTML = "";
 
 
     const size =
         container.offsetWidth;
+
+
+    if(size <= 0)
+        return;
 
 
     const center =
@@ -2291,7 +2389,7 @@ function createLights(){
 
 
     const radius =
-        center * 0.97;
+        center * .97;
 
 
     const total =
@@ -2310,7 +2408,8 @@ function createLights(){
                 total
             )
             *
-            (2 * Math.PI);
+            2 *
+            Math.PI;
 
 
         const x =
@@ -2362,8 +2461,7 @@ function createLights(){
 
         light.style.animationDelay =
             (
-                i *
-                0.05
+                i * .05
             )
             +
             "s";
@@ -2373,14 +2471,12 @@ function createLights(){
             .appendChild(
                 light
             );
-
     }
-
 }
 
 
 /* =========================================================
-   ACTUALIZAR RESPONSIVE
+   RESPONSIVE
 ========================================================= */
 
 let resizeTimer;
@@ -2388,18 +2484,40 @@ let resizeTimer;
 
 function updateLayout(){
 
-    resizeCanvas();
+    const wheelScreen =
+        document.getElementById(
+            "wheelScreen"
+        );
 
-    drawWheel();
 
-    createLights();
+    if(
+        wheelScreen.style.display ===
+        "flex"
+    ){
 
+        resizeCanvas();
+
+        drawWheel();
+
+        createLights();
+    }
+
+
+    const cover =
+        document.getElementById(
+            "coverScreen"
+        );
+
+
+    if(
+        cover.style.display !==
+        "none"
+    ){
+
+        drawPreviewWheel();
+    }
 }
 
-
-/* =========================================================
-   RESIZE
-========================================================= */
 
 window.addEventListener(
     "resize",
@@ -2415,33 +2533,60 @@ window.addEventListener(
                 updateLayout,
                 120
             );
-
     }
 );
 
 
 /* =========================================================
-   CARGAR
+   CARGA
 ========================================================= */
 
 window.addEventListener(
     "load",
     () => {
 
+        document
+            .getElementById(
+                "coverScreen"
+            )
+            .style.display =
+            "flex";
+
+
+        document
+            .getElementById(
+                "wheelScreen"
+            )
+            .style.display =
+            "none";
+
+
         if(document.fonts){
 
             document.fonts.ready.then(
-                updateLayout
+                () => {
+
+                    drawPreviewWheel();
+
+                }
             );
 
         }
 
         else{
 
-            updateLayout();
-
+            drawPreviewWheel();
         }
 
+
+        /*
+           INTENTAR AUTOPLAY.
+
+           Si el navegador lo bloquea,
+           el botón 🔊 permite iniciarlo.
+        */
+
+        playBackgroundMusic();
     }
 );
 
